@@ -4,9 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 public class Panel extends JPanel implements ActionListener{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	int size = 20;
 	int xPanel = 400, yPanel = 400;
@@ -25,7 +23,7 @@ public class Panel extends JPanel implements ActionListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		grid(g);
-		spawn(g);
+		cells(g);
 		display(g);
 	}
 
@@ -46,7 +44,7 @@ public class Panel extends JPanel implements ActionListener{
 		}
 	
 	}
-	 private void spawn(Graphics g) {
+	 private void cells(Graphics g) {
 			
 		 if(start) {
 				beforeLife[5][3]=1;
@@ -72,7 +70,6 @@ public class Panel extends JPanel implements ActionListener{
 			for(int y =0;y<yPanel/size;y++) {
 			if(life[x][y]==1) {	
 			g.fillRect(x*size+1, y*size+1, size-1, size-1);
-			
 				}
 			}
 		 }
@@ -87,7 +84,7 @@ public class Panel extends JPanel implements ActionListener{
 					}
 			}
 	 }
-	 int check(int x, int y) {
+	public int check(int x, int y) {
 		 int alive =0;
 		 alive += life[(x-1+xwidth)%(xwidth)][(y-1+yheight)%yheight];
 		 alive += life[(x-1+xwidth)%xwidth][(y+yheight)%yheight];
